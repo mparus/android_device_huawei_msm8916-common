@@ -115,8 +115,15 @@ BOARD_RAMDISK_OFFSET     := 0x02000000
 BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.console=ttyHSL0 androidboot.hardware=qcom msm_rtb.filter=0x237 ehci-hcd.park=3 androidboot.bootdevice=7824900.sdhci lpm_levels.sleep_disabled=1
 BOARD_KERNEL_SEPARATED_DT := true
 BOARD_DTBTOOL_ARGS := -2
-TARGET_KERNEL_SOURCE := kernel/huawei/msm8916
-TARGET_KERNEL_CONFIG := lineageos_cherry_defconfig
+#TARGET_KERNEL_SOURCE := kernel/huawei/msm8916
+#TARGET_KERNEL_CONFIG := lineageos_cherry_defconfig
+#TARGET_KERNEL_SOURCE := kernel/huawei/Soviet-kernel
+#TARGET_KERNEL_CONFIG := g620s_defconfig 
+TARGET_KERNEL_SOURCE := kernel/huawei/desalesouche
+#TARGET_KERNEL_SOURCE := kernel/huawei/msm8916
+TARGET_KERNEL_CONFIG := cm_hwY550_defconfig 
+
+#TARGET_KERNEL_CROSS_COMPILE_PREFIX := $(PWD)/prebuilts/gcc/linux-x86/arm/arm-eabi-4.8/bin/arm-eabi- 
 
 # Lights
 TARGET_PROVIDES_LIBLIGHT := true
