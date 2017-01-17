@@ -129,4 +129,13 @@ void vendor_load_properties()
         property_set("ro.build.description", "Che1-L04-user 4.4.4 GRJ90 C900B130 release-keys");
         property_set("ro.build.fingerprint", "Honor/Che1-L04/Che1:4.4.4/Che1-L04/C900B130:user/ota-rel-keys,release-keys");
     }
+  /* G760-L01 */
+    else if (buf.find("G760-L01") != std::string::npos) {
+        property_set("ro.product.model", "G760-L01");
+        property_set("ro.product.device", "G760-L01");
+        property_set("ro.build.product", "G760-L01");
+        property_set("ro.telephony.default_network", "20");
+        property_set("ro.build.description", "G760-L01-user 5.1.1 GRJ90 C464B340 release-keys");
+        property_set("ro.build.fingerprint", "Huawei/G760-L01/hwG760-L01:5.1.1/HuaweiG760-L01/C464B340:user/release-keys");
+    }
 }
