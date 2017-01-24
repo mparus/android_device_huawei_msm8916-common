@@ -28,6 +28,10 @@ TARGET_BOARD_PLATFORM_GPU := qcom-adreno306
 TARGET_NO_BOOTLOADER := true
 TARGET_BOOTLOADER_BOARD_NAME := msm8916
 
+# NFC
+BOARD_NFC_CHIPSET := pn547
+BOARD_NFC_DEVICE := "/dev/pn544"
+
 # Architecture
 TARGET_ARCH := arm
 TARGET_GLOBAL_CFLAGS += -mfpu=neon -mfloat-abi=softfp
@@ -49,6 +53,7 @@ AUDIO_FEATURE_ENABLED_NEW_SAMPLE_RATE := true
 BOARD_USES_ALSA_AUDIO := true
 USE_CUSTOM_AUDIO_POLICY := 1
 USE_XML_AUDIO_POLICY_CONF := 1
+TARGET_QCOM_AUDIO_VARIANT := caf-msm8916
 
 # Bluetooth
 BOARD_HAVE_BLUETOOTH := true
@@ -66,6 +71,7 @@ TARGET_HAS_LEGACY_CAMERA_HAL1 := true
 # Charger
 BOARD_CHARGER_DISABLE_INIT_BLANK := true
 BOARD_CHARGER_ENABLE_SUSPEND := true
+BOARD_HAL_STATIC_LIBRARIES += libhealthd.qcom
 
 # CMHW
 BOARD_HARDWARE_CLASS := \
@@ -82,6 +88,7 @@ BOARD_NO_SECURE_DISCARD := true
 # FM
 AUDIO_FEATURE_ENABLED_FM_POWER_OPT := true
 TARGET_QCOM_NO_FM_FIRMWARE := true
+BOARD_HAVE_QCOM_FM := true
 
 # GPS
 TARGET_NO_RPC := true
@@ -108,6 +115,9 @@ TARGET_PLATFORM_DEVICE_BASE := /devices/soc.0/
 TARGET_RECOVERY_DEVICE_MODULES := libinit_cherry
 TARGET_UNIFIED_DEVICE := true
 
+# Display
+TARGET_QCOM_DISPLAY_VARIANT := caf-msm8916
+
 # Kernel
 BOARD_KERNEL_BASE        := 0x80000000
 BOARD_KERNEL_PAGESIZE    := 2048
@@ -116,13 +126,13 @@ BOARD_RAMDISK_OFFSET     := 0x02000000
 BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.console=ttyHSL0 androidboot.hardware=qcom msm_rtb.filter=0x237 ehci-hcd.park=3 androidboot.bootdevice=7824900.sdhci lpm_levels.sleep_disabled=1
 BOARD_KERNEL_SEPARATED_DT := true
 BOARD_DTBTOOL_ARGS := -2
-#TARGET_KERNEL_SOURCE := kernel/huawei/msm8916
+TARGET_KERNEL_SOURCE := kernel/huawei/msm8916
 #TARGET_KERNEL_CONFIG := lineageos_cherry_defconfig
+TARGET_KERNEL_CONFIG := g760_defconfig
 #TARGET_KERNEL_SOURCE := kernel/huawei/Soviet-kernel
 #TARGET_KERNEL_CONFIG := g620s_defconfig 
-TARGET_KERNEL_SOURCE := kernel/huawei/desalesouche
-#TARGET_KERNEL_SOURCE := kernel/huawei/msm8916
-TARGET_KERNEL_CONFIG := cm_hwY550_defconfig 
+#TARGET_KERNEL_SOURCE := kernel/huawei/desalesouche
+#TARGET_KERNEL_CONFIG := cm_hwY550_defconfig 
 
 #TARGET_KERNEL_CROSS_COMPILE_PREFIX := $(PWD)/prebuilts/gcc/linux-x86/arm/arm-eabi-4.8/bin/arm-eabi- 
 
@@ -150,6 +160,7 @@ BOARD_FLASH_BLOCK_SIZE := 131072 # (BOARD_KERNEL_PAGESIZE * 64)
 
 # Power
 TARGET_POWERHAL_VARIANT := qcom
+#TARGET_POWERHAL_SET_INTERACTIVE_EXT := $(LOCAL_PATH)/power/power_ext.c
 
 # Properties
 TARGET_SYSTEM_PROP := $(VENDOR_PATH)/system.prop
