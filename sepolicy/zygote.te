@@ -1,0 +1,3 @@
+# Control cgroups.
+allow zygote cgroup:dir create_dir_perms;
+allow zygote self:capability sys_admin;
