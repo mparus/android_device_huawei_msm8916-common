@@ -80,6 +80,7 @@ BOARD_HARDWARE_CLASS := \
 TARGET_TAP_TO_WAKE_NODE := "/sys/touch_screen/easy_wakeup_gesture"
 
 # Encryption
+#TARGET_CRYPTFS_HW_PATH := $(VENDOR_PATH)/cryptfs_hw
 TARGET_HW_DISK_ENCRYPTION := true
 
 # Flags
@@ -134,7 +135,7 @@ TARGET_KERNEL_CONFIG := g760_defconfig
 #TARGET_KERNEL_SOURCE := kernel/huawei/desalesouche
 #TARGET_KERNEL_CONFIG := cm_hwY550_defconfig 
 
-#TARGET_KERNEL_CROSS_COMPILE_PREFIX := $(PWD)/prebuilts/gcc/linux-x86/arm/arm-eabi-4.8/bin/arm-eabi- 
+TARGET_KERNEL_CROSS_COMPILE_PREFIX := $(PWD)/prebuilts/gcc/linux-x86/arm/arm-eabi-4.8/bin/arm-eabi- 
 
 # Lights
 TARGET_PROVIDES_LIBLIGHT := true
@@ -143,6 +144,7 @@ TARGET_PROVIDES_LIBLIGHT := true
 MALLOC_SVELTE := true
 
 # Media
+TARGET_QCOM_MEDIA_VARIANT := caf-msm8916 
 TARGET_USES_MEDIA_EXTENSIONS := true
 
 # Partitions
@@ -160,6 +162,7 @@ BOARD_FLASH_BLOCK_SIZE := 131072 # (BOARD_KERNEL_PAGESIZE * 64)
 
 # Power
 TARGET_POWERHAL_VARIANT := qcom
+TARGET_PROVIDES_POWERHAL := true
 #TARGET_POWERHAL_SET_INTERACTIVE_EXT := $(LOCAL_PATH)/power/power_ext.c
 
 # Properties
@@ -173,6 +176,16 @@ TARGET_RECOVERY_DEVICE_DIRS += $(VENDOR_PATH)
 #RECOVERY_VARIANT := twrp
 ifneq ($(RECOVERY_VARIANT),twrp)
 TARGET_RECOVERY_FSTAB := $(VENDOR_PATH)/recovery/recovery.fstab
+RECOVERY_GRAPHICS_FORCE_USE_LINELENGTH := true
+TW_THEME := portrait_hdpi
+RECOVERY_SDCARD_ON_DATA := true
+TW_NEW_ION_HEAP := true
+TW_BRIGHTNESS_PATH := /sys/class/leds/lcd-backlight/brightness
+TW_EXTRA_LANGUAGES := true
+TW_INPUT_BLACKLIST := "accelerometer\x0alis3dh-accel"
+TARGET_RECOVERY_QCOM_RTC_FIX := true
+BOARD_SUPPRESS_SECURE_ERASE := true
+BOARD_NO_SECURE_DISCARD := true
 else
 TARGET_RECOVERY_FSTAB := $(VENDOR_PATH)/recovery/twrp.fstab
 RECOVERY_GRAPHICS_FORCE_USE_LINELENGTH := true
