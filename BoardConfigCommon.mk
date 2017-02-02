@@ -20,6 +20,9 @@
 
 VENDOR_PATH := device/huawei/msm8916-common
 
+# Use Snapdragon LLVM, if available
+TARGET_USE_SDCLANG := true
+
 # Platform
 TARGET_BOARD_PLATFORM := msm8916
 TARGET_BOARD_PLATFORM_GPU := qcom-adreno306
@@ -88,6 +91,7 @@ BOARD_NO_SECURE_DISCARD := true
 
 # FM
 AUDIO_FEATURE_ENABLED_FM_POWER_OPT := true
+BOARD_HAVE_QCOM_FM := true
 TARGET_QCOM_NO_FM_FIRMWARE := true
 BOARD_HAVE_QCOM_FM := true
 
