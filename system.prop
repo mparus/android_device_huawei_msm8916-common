@@ -27,7 +27,7 @@ debug.sf.hw=1
 debug.egl.hw=1
 persist.hwc.mdpcomp.enable=true
 debug.mdpcomp.logs=0
-dalvik.vm.heapsize=36m
+#dalvik.vm.heapsize=36m
 dev.pm.dyn_samplingrate=1
 persist.demo.hdmirotationlock=false
 debug.enable.sglscale=1
@@ -173,5 +173,6 @@ ro.core_ctl_min_cpu=2
 ro.core_ctl_max_cpu=4
 
 qemu.hw.mainkeys=0
-camera.hal1.packagelist=com.skype.raider,com.whatsapp,com.snapchat.android,com.instagram.android
-ro.sys.fw.bg_apps_limit=20
+camera.hal1.packagelist=com.skype.raider,com.whatsapp,com.google.android.GoogleCamera
+#ro.sys.fw.bg_apps_limit=20
+persist.bt.enableAptXHD=true

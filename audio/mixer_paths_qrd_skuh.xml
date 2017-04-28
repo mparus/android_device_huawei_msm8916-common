@@ -767,6 +767,10 @@
     </path>
 
     <path name="bt-sco-mic">
+  	<path name="adc1" />
+        <ctl name="ADC1 Volume" value="12" />
+        <ctl name="DEC1 Volume" value="88" />
+        <ctl name="MI2S_RX Format" value="S16_LE" />
     </path>
 
     <path name="bt-sco-headset-wb">

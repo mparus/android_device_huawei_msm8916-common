@@ -56,10 +56,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.sf.lcd_density=320 \
     ro.sys.sdcardfs=true
 
-PRODUCT_PROPERTY_OVERRIDES += \
-    dalvik.vm.heapgrowthlimit=128m \
-    dalvik.vm.heapminfree=6m \
-    dalvik.vm.heapstartsize=14m
+#PRODUCT_PROPERTY_OVERRIDES += \
+#    dalvik.vm.heapgrowthlimit=128m \
+#    dalvik.vm.heapminfree=6m \
+#    dalvik.vm.heapstartsize=14m
 
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
     camera2.portability.force_api=1
@@ -81,6 +81,7 @@ PRODUCT_PACKAGES += \
     audio.usb.default \
     audio.r_submix.default \
     audio.primary.msm8916 \
+    audio_amplifier.msm8916 \
     tinymix \
     libqcomvisualizer \
     libqcompostprocbundle \
@@ -120,7 +121,7 @@ PRODUCT_PACKAGES += \
 
 # Compat symbols
 PRODUCT_PACKAGES += \
-    libshim_cutils
+    libshim_cutils 
 
 # Connectivity Engine support (CNE)
 PRODUCT_PACKAGES += \
@@ -140,8 +141,8 @@ PRODUCT_PACKAGES += \
     libfmjni
 
 # Gello
-#PRODUCT_PACKAGES += \
-#    Gello
+PRODUCT_PACKAGES += \
+    Gello
 
 # GPS
 PRODUCT_PACKAGES += \
@@ -274,3 +275,8 @@ PRODUCT_COPY_FILES += \
 # LiveDisplay native
 PRODUCT_PACKAGES += \
     libjni_livedisplay
+
+# Doze
+PRODUCT_PACKAGES += \
+   KiwiDoze
+

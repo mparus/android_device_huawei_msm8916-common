@@ -35,9 +35,42 @@
 #include "property_service.h"
 #include "log.h"
 #include "util.h"
+#include <sys/sysinfo.h>
+
+char const *device;
+char const *heapstartsize;
+char const *heapgrowthlimit;
+char const *heapsize;
+char const *heapminfree;
+
+void check_device()
+{
+	struct sysinfo sys;
+	sysinfo(&sys);
+	if (sys.totalram > 2048ull * 1024 * 1024) {
+	    // from - phone-xxhdpi-3072-dalvik-heap.mk
+	    heapstartsize = "8m";
+	    heapgrowthlimit = "288m";
+	    heapsize = "768m";
+	    heapminfree = "512k";
+	} else if (sys.totalram > 1024ull * 1024 * 1024) {
+	    // from - phone-xxhdpi-2048-dalvik-heap.mk
+	    heapstartsize = "16m";
+	    heapgrowthlimit = "192m";
+	    heapsize = "512m";
+	    heapminfree = "2m";
+	} else {
+	    // from - phone-xhdpi-1024-dalvik-heap.mk
+	    heapstartsize = "8m";
+	    heapgrowthlimit = "96m";
+	    heapsize = "256m";
+	    heapminfree = "2m";
+	}
+}
 
 void vendor_load_properties()
 {
+    check_device();
     std::ifstream fin;
     std::string buf;
 
@@ -138,4 +171,10 @@ void vendor_load_properties()
         property_set("ro.build.description", "G760-L01-user 5.1.1 GRJ90 C464B340 release-keys");
         property_set("ro.build.fingerprint", "Huawei/G760-L01/hwG760-L01:5.1.1/HuaweiG760-L01/C464B340:user/release-keys");
     }
+property_set("dalvik.vm.heapstartsize", heapstartsize);
+property_set("dalvik.vm.heapgrowthlimit", heapgrowthlimit);
+property_set("dalvik.vm.heapsize", heapsize);
+property_set("dalvik.vm.heaptargetutilization", "0.75");
+property_set("dalvik.vm.heapminfree", heapminfree);
+property_set("dalvik.vm.heapmaxfree", "8m");
 }
