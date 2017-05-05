@@ -884,8 +884,10 @@ service bms-sh /system/bin/sh /init.qcom.bms.sh
     oneshot
 
 service vm_bms /system/bin/vm_bms
+    class core
     user root
-    group root
+    group root wakelock
+    writepid /dev/cpuset/system-background/tasks
     disabled
 
 service msm_irqbalance /system/bin/msm_irqbalance -f /system/vendor/etc/msm_irqbalance.conf
